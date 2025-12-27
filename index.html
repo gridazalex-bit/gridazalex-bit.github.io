@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kai Ora Organic Café</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet">
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        * {
+            font-family: 'Lato', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(47, 81, 50, 0.3), rgba(47, 81, 50, 0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%238B5E3C" width="1200" height="500"/><circle fill="%234D7F52" cx="200" cy="150" r="80" opacity="0.3"/><circle fill="%232F5132" cx="1000" cy="350" r="100" opacity="0.3"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .menu-item-image {
+            background: linear-gradient(135deg, #4D7F52 0%, #2F5132 100%);
+        }
+        
+        .gallery-image {
+            background: linear-gradient(to bottom right, #8B5E3C, #4D7F52);
+        }
+        
+        .team-member-photo {
+            background: radial-gradient(circle, #4D7F52 0%, #2F5132 100%);
+        }
+        
+        .hamburger-menu {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            .hamburger-menu {
+                display: block;
+            }
+            .mobile-menu {
+                display: none;
+            }
+            .mobile-menu.active {
+                display: block;
+            }
+        }
+        
+        .slideshow-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .arrow {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(47, 81, 50, 0.8);
+            color: #F5F0E6;
+            padding: 16px;
+            border-radius: 50%;
+            user-select: none;
+            transition: background 0.3s;
+        }
+        
+        .arrow:hover {
+            background: rgba(47, 81, 50, 1);
+        }
+        
+        .arrow.left { left: 20px; }
+        .arrow.right { right: 20px; }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-[#F5F0E6] text-gray-800">
+  <div class="h-full w-full overflow-auto"><!-- Navigation Bar -->
+   <nav class="bg-[#2F5132] text-[#F5F0E6] sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex justify-between items-center h-16"><!-- Logo -->
+      <div class="flex items-center space-x-2">
+       <svg width="40" height="40" viewbox="0 0 40 40" class="text-[#4D7F52]"><circle cx="20" cy="20" r="18" fill="currentColor" /> <path d="M20 8 L28 20 L20 32 L12 20 Z" fill="#F5F0E6" />
+       </svg><span class="font-bold text-xl" id="nav-site-name">Kai Ora Organic Café</span>
+      </div><!-- Desktop Navigation -->
+      <div class="desktop-nav flex space-x-6"><a href="#home" class="hover:text-[#4D7F52] transition-colors font-medium nav-link" data-page="home">Home</a> <a href="#about" class="hover:text-[#4D7F52] transition-colors font-medium nav-link" data-page="about">About Us / Mō Mātou</a> <a href="#gallery" class="hover:text-[#4D7F52] transition-colors font-medium nav-link" data-page="gallery">Gallery / Te Taiwhanga</a> <a href="#menu" class="hover:text-[#4D7F52] transition-colors font-medium nav-link" data-page="menu">Menu / Rarangi Kai</a> <a href="#contact" class="hover:text-[#4D7F52] transition-colors font-medium nav-link" data-page="contact">Contact / Whakapā mai</a>
+      </div><!-- Hamburger Menu --> <button class="hamburger-menu" id="hamburgerBtn">
+       <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6" /> <line x1="3" y1="12" x2="21" y2="12" /> <line x1="3" y1="18" x2="21" y2="18" />
+       </svg></button>
+     </div>
+    </div>
+   </nav><!-- Main Content Area -->
+   <main id="mainContent"><!-- HOME PAGE -->
+    <div id="home" class="page active"><!-- Hero Section -->
+     <section class="hero-section text-white py-24 md:py-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+       <h1 class="text-4xl md:text-6xl font-bold mb-4" id="hero-motto">Whāngaihia tō tinana ki te kai organic</h1>
+       <p class="text-2xl md:text-3xl mb-8" id="hero-motto-english">Nourish your body with organic kai</p>
+       <div class="flex justify-center items-center space-x-2 text-sm">
+        <svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21" />
+        </svg><span>🎵 Café Sounds Available: Restaurant Ambience • Making Espresso • Pouring Hot Tea</span>
+       </div>
+      </div>
+     </section><!-- Our Story Section -->
+     <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+         <h2 class="text-3xl md:text-4xl font-bold text-[#2F5132] mb-6">Our Story</h2>
+         <p class="text-lg mb-4 leading-relaxed">Welcome to Kai Ora Organic Café, where traditional Māori kai meets modern organic dining. Our family-owned café is dedicated to serving wholesome, locally-sourced meals that honor our heritage and nourish your body.</p>
+         <p class="text-lg leading-relaxed">Every dish we create celebrates the bounty of Aotearoa, from fresh seafood to native greens, prepared with love and respect for the land that provides for us.</p>
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-xl" style="background: linear-gradient(135deg, #4D7F52 0%, #8B5E3C 100%); min-height: 300px; display: flex; align-items: center; justify-content: center;">
+         <div class="text-white text-center p-8">
+          <svg width="80" height="80" viewbox="0 0 100 100" class="mx-auto mb-4"><circle cx="50" cy="50" r="45" fill="rgba(255,255,255,0.2)" /> <path d="M30 50 Q50 30 70 50 Q50 70 30 50" fill="white" opacity="0.8" />
+          </svg>
+          <p class="text-xl font-semibold">Traditional Māori Feast</p>
+          <p class="text-sm mt-2 opacity-80">Image: Traditional Foods - Tamaki Māori Village</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section><!-- Interactive Slider Section -->
+     <section class="py-16 bg-[#F5F0E6]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+       <h2 class="text-3xl md:text-4xl font-bold text-[#2F5132] mb-8 text-center">Traditional Kai Showcase</h2>
+       <div class="slideshow-container relative rounded-xl overflow-hidden shadow-2xl" style="height: 400px;">
+        <div class="slide active h-full" style="background: linear-gradient(135deg, #4D7F52 0%, #2F5132 100%);">
+         <div class="h-full flex items-center justify-center text-white p-8">
+          <div class="text-center">
+           <svg width="120" height="120" viewbox="0 0 120 120" class="mx-auto mb-4"><path d="M60 20 Q40 30 30 50 Q35 70 50 85 L60 95 L70 85 Q85 70 90 50 Q80 30 60 20 Z" fill="rgba(255,255,255,0.3)" /> <ellipse cx="60" cy="60" rx="25" ry="35" fill="rgba(255,255,255,0.4)" />
+           </svg>
+           <h3 class="text-2xl font-bold mb-2">Traditional Kai</h3>
+           <p class="text-lg">Fresh Fiddlehead Greens</p>
+           <p class="text-xs mt-2 opacity-75">Images: newzealand.com</p>
+          </div>
+         </div>
+        </div>
+        <div class="slide h-full" style="background: linear-gradient(135deg, #8B5E3C 0%, #4D7F52 100%);">
+         <div class="h-full flex items-center justify-center text-white p-8">
+          <div class="text-center">
+           <svg width="120" height="120" viewbox="0 0 120 120" class="mx-auto mb-4"><ellipse cx="60" cy="60" rx="40" ry="25" fill="rgba(255,255,255,0.3)" /> <ellipse cx="60" cy="55" rx="35" ry="20" fill="rgba(255,255,255,0.4)" /> <circle cx="50" cy="50" r="3" fill="white" /> <circle cx="70" cy="50" r="3" fill="white" />
+           </svg>
+           <h3 class="text-2xl font-bold mb-2">Traditional Kai</h3>
+           <p class="text-lg">Steamed Green-Lipped Mussels</p>
+           <p class="text-xs mt-2 opacity-75">Images: newzealand.com</p>
+          </div>
+         </div>
+        </div>
+        <div class="arrow left" onclick="changeSlide(-1)">
+         ❮
+        </div>
+        <div class="arrow right" onclick="changeSlide(1)">
+         ❯
+        </div>
+       </div>
+      </div>
+     </section><!-- What We Offer Section -->
+     <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       <h2 class="text-3xl md:text-4xl font-bold text-[#2F5132] mb-12 text-center">What We Offer</h2>
+       <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center p-6 rounded-lg bg-[#F5F0E6] shadow-md hover:shadow-xl transition-shadow">
+         <div class="w-16 h-16 bg-[#4D7F52] rounded-full mx-auto mb-4 flex items-center justify-center">
+          <svg width="32" height="32" viewbox="0 0 32 32" fill="white"><path d="M16 4 L20 12 L28 13 L22 19 L24 28 L16 23 L8 28 L10 19 L4 13 L12 12 Z" />
+          </svg>
+         </div>
+         <h3 class="text-xl font-bold text-[#2F5132] mb-3">100% Organic</h3>
+         <p class="text-gray-700">All our ingredients are locally sourced and certified organic, ensuring the highest quality and sustainability.</p>
+        </div>
+        <div class="text-center p-6 rounded-lg bg-[#F5F0E6] shadow-md hover:shadow-xl transition-shadow">
+         <div class="w-16 h-16 bg-[#4D7F52] rounded-full mx-auto mb-4 flex items-center justify-center">
+          <svg width="32" height="32" viewbox="0 0 32 32" fill="white"><circle cx="16" cy="16" r="12" /> <circle cx="16" cy="16" r="8" fill="#2F5132" />
+          </svg>
+         </div>
+         <h3 class="text-xl font-bold text-[#2F5132] mb-3">Traditional Māori Kai</h3>
+         <p class="text-gray-700">Experience authentic flavors inspired by traditional Māori cooking methods and native ingredients.</p>
+        </div>
+        <div class="text-center p-6 rounded-lg bg-[#F5F0E6] shadow-md hover:shadow-xl transition-shadow">
+         <div class="w-16 h-16 bg-[#4D7F52] rounded-full mx-auto mb-4 flex items-center justify-center">
+          <svg width="32" height="32" viewbox="0 0 32 32" fill="white"><rect x="8" y="8" width="16" height="16" rx="2" /> <line x1="12" y1="14" x2="20" y2="14" stroke="#2F5132" stroke-width="2" /> <line x1="12" y1="18" x2="20" y2="18" stroke="#2F5132" stroke-width="2" />
+          </svg>
+         </div>
+         <h3 class="text-xl font-bold text-[#2F5132] mb-3">Warm Atmosphere</h3>
+         <p class="text-gray-700">Enjoy your meal in our welcoming space that celebrates community and whānau values.</p>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div><!-- ABOUT PAGE -->
+    <div id="about" class="page hidden">
+     <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       <h1 class="text-4xl md:text-5xl font-bold text-[#2F5132] mb-4 text-center">About Us / Mō Mātou</h1>
+       <p class="text-center text-[#4D7F52] mb-8 italic">🎵 "Tēnā koe and welcome to my cafe" - Audio created with text-to-speech</p><!-- Story Section -->
+       <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+        <div>
+         <h2 class="text-3xl font-bold text-[#2F5132] mb-6">Our Story</h2>
+         <p class="text-lg mb-4 leading-relaxed">Kai Ora was born from a deep passion for connecting our community with the flavors and traditions of Aotearoa. Our family has been cultivating relationships with local growers and fishermen for generations.</p>
+         <p class="text-lg mb-4 leading-relaxed">We believe that food is more than sustenance—it's a celebration of culture, a connection to the land, and a way to bring people together. Every ingredient tells a story, and we're honored to share these stories with you.</p>
+         <p class="text-lg leading-relaxed">Our commitment to organic, sustainable practices ensures that we're not only nourishing our customers but also protecting the environment for future generations.</p>
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-xl" style="background: linear-gradient(to bottom right, #8B5E3C, #4D7F52); min-height: 300px; display: flex; align-items: center; justify-content: center;">
+         <div class="text-white text-center p-8">
+          <svg width="100" height="100" viewbox="0 0 100 100" class="mx-auto mb-4"><circle cx="50" cy="50" r="45" fill="rgba(255,255,255,0.2)" /> <path d="M30 60 Q50 40 70 60" stroke="white" stroke-width="4" fill="none" /> <circle cx="35" cy="45" r="5" fill="white" /> <circle cx="65" cy="45" r="5" fill="white" />
+          </svg>
+          <p class="text-xl font-semibold">Conference &amp; Event Food</p>
+          <p class="text-sm mt-2 opacity-80">Image: Puha and Pakeha</p>
+         </div>
+        </div>
+       </div><!-- Video Section -->
+       <div class="mb-16">
+        <h2 class="text-3xl font-bold text-[#2F5132] mb-6 text-center">Our Mission</h2>
+        <div class="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl" style="background: linear-gradient(135deg, #2F5132 0%, #4D7F52 100%); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;">
+         <div class="text-white text-center p-8">
+          <svg width="80" height="80" viewbox="0 0 80 80" class="mx-auto mb-4"><circle cx="40" cy="40" r="35" stroke="white" stroke-width="3" fill="none" /> <polygon points="32,25 32,55 55,40" fill="white" />
+          </svg>
+          <p class="text-xl">Client Story / Sustainability Video</p>
+          <p class="text-sm mt-2 opacity-75">960px × 540px</p>
+         </div>
+        </div>
+       </div><!-- Hours -->
+       <div class="bg-[#F5F0E6] rounded-xl p-8 mb-16 text-center">
+        <h3 class="text-2xl font-bold text-[#2F5132] mb-4">Hours of Operation</h3>
+        <p class="text-xl text-[#8B5E3C]">Tuesday to Sunday: 7:00 AM - 3:00 PM</p>
+        <p class="text-lg text-gray-600 mt-2">Closed Mondays</p>
+       </div><!-- Meet the Team -->
+       <div>
+        <h2 class="text-3xl font-bold text-[#2F5132] mb-8 text-center">Meet the Team</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+         <div class="text-center">
+          <div class="team-member-photo w-48 h-48 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
+           <svg width="80" height="80" viewbox="0 0 80 80" fill="white"><circle cx="40" cy="30" r="15" /> <path d="M15 65 Q40 50 65 65 L65 75 Q40 85 15 75 Z" />
+           </svg>
+          </div>
+          <h3 class="text-xl font-bold text-[#2F5132] mb-2">Aroha Patel</h3>
+          <p class="text-[#4D7F52] font-semibold mb-2">Head Chef</p>
+          <p class="text-gray-700">Passionate about traditional Māori cuisine with 15 years of experience.</p>
+         </div>
+         <div class="text-center">
+          <div class="team-member-photo w-48 h-48 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
+           <svg width="80" height="80" viewbox="0 0 80 80" fill="white"><circle cx="40" cy="30" r="15" /> <path d="M15 65 Q40 50 65 65 L65 75 Q40 85 15 75 Z" />
+           </svg>
+          </div>
+          <h3 class="text-xl font-bold text-[#2F5132] mb-2">James Wong</h3>
+          <p class="text-[#4D7F52] font-semibold mb-2">Manager</p>
+          <p class="text-gray-700">Dedicated to creating a warm, welcoming environment for all guests.</p>
+         </div>
+         <div class="text-center">
+          <div class="team-member-photo w-48 h-48 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
+           <svg width="80" height="80" viewbox="0 0 80 80" fill="white"><circle cx="40" cy="30" r="15" /> <path d="M15 65 Q40 50 65 65 L65 75 Q40 85 15 75 Z" />
+           </svg>
+          </div>
+          <h3 class="text-xl font-bold text-[#2F5132] mb-2">Sophie Liu</h3>
+          <p class="text-[#4D7F52] font-semibold mb-2">Pastry Chef</p>
+          <p class="text-gray-700">Creates delightful organic desserts using native New Zealand ingredients.</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div><!-- GALLERY PAGE -->
+    <div id="gallery" class="page hidden">
+     <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       <h1 class="text-4xl md:text-5xl font-bold text-[#2F5132] mb-4 text-center">Gallery / Te Taiwhanga</h1>
+       <p class="text-xl text-center text-gray-600 mb-12">Our Food &amp; Place</p><!-- Large Slideshow -->
+       <div class="mb-12">
+        <div class="slideshow-container relative rounded-xl overflow-hidden shadow-2xl" style="max-width: 1000px; height: 600px; margin: 0 auto;">
+         <div class="slide active h-full gallery-slide-1" style="background: linear-gradient(135deg, #4D7F52 0%, #2F5132 100%);">
+          <div class="h-full flex items-center justify-center text-white p-8">
+           <div class="text-center">
+            <svg width="150" height="150" viewbox="0 0 150 150" class="mx-auto mb-4"><path d="M75 30 Q55 40 45 60 Q50 80 65 95 L75 105 L85 95 Q100 80 105 60 Q95 40 75 30 Z" fill="rgba(255,255,255,0.3)" /> <ellipse cx="75" cy="75" rx="30" ry="40" fill="rgba(255,255,255,0.4)" />
+            </svg>
+            <h3 class="text-3xl font-bold">Traditional Food</h3>
+            <p class="text-xl mt-2">Fresh Fiddlehead Greens</p>
+            <p class="text-sm mt-2 opacity-75">Source: newzealand.com</p>
+           </div>
+          </div>
+         </div>
+         <div class="slide h-full gallery-slide-2" style="background: linear-gradient(135deg, #8B5E3C 0%, #4D7F52 100%);">
+          <div class="h-full flex items-center justify-center text-white p-8">
+           <div class="text-center">
+            <svg width="150" height="150" viewbox="0 0 150 150" class="mx-auto mb-4"><ellipse cx="75" cy="75" rx="50" ry="30" fill="rgba(255,255,255,0.3)" /> <ellipse cx="75" cy="70" rx="45" ry="25" fill="rgba(255,255,255,0.4)" />
+            </svg>
+            <h3 class="text-3xl font-bold">Traditional Food</h3>
+            <p class="text-xl mt-2">Steamed Green-Lipped Mussels</p>
+            <p class="text-sm mt-2 opacity-75">Source: newzealand.com</p>
+           </div>
+          </div>
+         </div>
+         <div class="slide h-full gallery-slide-3" style="background: linear-gradient(135deg, #2F5132 0%, #8B5E3C 100%);">
+          <div class="h-full flex items-center justify-center text-white p-8">
+           <div class="text-center">
+            <svg width="150" height="150" viewbox="0 0 150 150" class="mx-auto mb-4"><ellipse cx="75" cy="75" rx="55" ry="35" fill="rgba(255,255,255,0.3)" /> <ellipse cx="75" cy="70" rx="50" ry="30" fill="rgba(255,255,255,0.4)" /> <circle cx="60" cy="65" r="4" fill="white" /> <circle cx="90" cy="65" r="4" fill="white" />
+            </svg>
+            <h3 class="text-3xl font-bold">Traditional Food</h3>
+            <p class="text-xl mt-2">Fresh Pacific Oysters</p>
+            <p class="text-sm mt-2 opacity-75">Source: newzealand.com</p>
+           </div>
+          </div>
+         </div>
+         <div class="slide h-full gallery-slide-4" style="background: linear-gradient(135deg, #4D7F52 0%, #8B5E3C 100%);">
+          <div class="h-full flex items-center justify-center text-white p-8">
+           <div class="text-center">
+            <svg width="150" height="150" viewbox="0 0 150 150" class="mx-auto mb-4"><circle cx="75" cy="75" r="45" fill="rgba(255,255,255,0.3)" /> <circle cx="75" cy="75" r="35" fill="rgba(255,255,255,0.4)" /> <path d="M60 75 Q75 85 90 75" stroke="white" stroke-width="3" fill="none" />
+            </svg>
+            <h3 class="text-3xl font-bold">Traditional Food</h3>
+            <p class="text-xl mt-2">Pan-Seared Scallops</p>
+            <p class="text-sm mt-2 opacity-75">Source: newzealand.com</p>
+           </div>
+          </div>
+         </div>
+         <div class="slide h-full gallery-slide-5" style="background: linear-gradient(135deg, #8B5E3C 0%, #2F5132 100%);">
+          <div class="h-full flex items-center justify-center text-white p-8">
+           <div class="text-center">
+            <svg width="150" height="150" viewbox="0 0 150 150" class="mx-auto mb-4"><rect x="40" y="40" width="70" height="70" rx="5" fill="rgba(255,255,255,0.3)" /> <circle cx="60" cy="60" r="8" fill="white" /> <circle cx="90" cy="60" r="8" fill="white" /> <circle cx="75" cy="90" r="8" fill="white" />
+            </svg>
+            <h3 class="text-3xl font-bold">Event Food</h3>
+            <p class="text-xl mt-2">Catering Platters</p>
+            <p class="text-sm mt-2 opacity-75">Source: Tamaki Māori Village</p>
+           </div>
+          </div>
+         </div>
+         <div class="slide h-full gallery-slide-6" style="background: linear-gradient(135deg, #2F5132 0%, #4D7F52 100%);">
+          <div class="h-full flex items-center justify-center text-white p-8">
+           <div class="text-center">
+            <svg width="150" height="150" viewbox="0 0 150 150" class="mx-auto mb-4"><rect x="30" y="50" width="90" height="60" rx="8" fill="rgba(255,255,255,0.3)" /> <rect x="40" y="60" width="70" height="40" rx="5" fill="rgba(255,255,255,0.4)" />
+            </svg>
+            <h3 class="text-3xl font-bold">Event Food</h3>
+            <p class="text-xl mt-2">Special Occasions</p>
+            <p class="text-sm mt-2 opacity-75">Source: Puha and Pakeha</p>
+           </div>
+          </div>
+         </div>
+         <div class="arrow left" onclick="changeGallerySlide(-1)">
+          ❮
+         </div>
+         <div class="arrow right" onclick="changeGallerySlide(1)">
+          ❯
+         </div>
+        </div>
+        <p class="text-center text-gray-600 mt-4 italic">Our traditional Māori-inspired dishes and café atmosphere</p>
+       </div><!-- Image Grid -->
+       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
+        <div class="gallery-image rounded-lg shadow-md aspect-[4/3] flex items-center justify-center text-white font-semibold" style="background: linear-gradient(to bottom right, #4D7F52, #8B5E3C);"><span>Aotearoa Region</span>
+        </div>
+        <div class="gallery-image rounded-lg shadow-md aspect-[4/3] flex items-center justify-center text-white font-semibold" style="background: linear-gradient(to bottom right, #8B5E3C, #2F5132);"><span>Local Coast</span>
+        </div>
+        <div class="gallery-image rounded-lg shadow-md aspect-[4/3] flex items-center justify-center text-white font-semibold" style="background: linear-gradient(to bottom right, #2F5132, #4D7F52);"><span>Fresh Kai</span>
+        </div>
+        <div class="gallery-image rounded-lg shadow-md aspect-[4/3] flex items-center justify-center text-white font-semibold" style="background: linear-gradient(to bottom right, #4D7F52, #8B5E3C);"><span>Organic Produce</span>
+        </div>
+        <div class="gallery-image rounded-lg shadow-md aspect-[4/3] flex items-center justify-center text-white font-semibold" style="background: linear-gradient(to bottom right, #8B5E3C, #2F5132);"><span>Café Interior</span>
+        </div>
+        <div class="gallery-image rounded-lg shadow-md aspect-[4/3] flex items-center justify-center text-white font-semibold" style="background: linear-gradient(to bottom right, #2F5132, #4D7F52);"><span>Dining Space</span>
+        </div>
+       </div><!-- Audio Section -->
+       <div class="space-y-4 max-w-3xl mx-auto">
+        <h3 class="text-2xl font-bold text-[#2F5132] text-center mb-4">Café Sounds</h3>
+        <div class="bg-[#F5F0E6] rounded-xl p-6 shadow-md">
+         <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 bg-[#4D7F52] rounded-full flex items-center justify-center flex-shrink-0">
+           <svg width="24" height="24" viewbox="0 0 24 24" fill="white"><polygon points="6,4 6,20 18,12" />
+           </svg>
+          </div>
+          <div class="flex-grow">
+           <p class="font-bold text-[#2F5132]">Restaurant Ambience</p>
+           <p class="text-sm text-gray-600">Public Domain • Uploaded 12.28.10</p>
+           <p class="text-xs text-gray-500 mt-1">Background ambiance with conversations and café sounds</p>
+          </div>
+         </div>
+        </div>
+        <div class="bg-[#F5F0E6] rounded-xl p-6 shadow-md">
+         <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 bg-[#4D7F52] rounded-full flex items-center justify-center flex-shrink-0">
+           <svg width="24" height="24" viewbox="0 0 24 24" fill="white"><polygon points="6,4 6,20 18,12" />
+           </svg>
+          </div>
+          <div class="flex-grow">
+           <p class="font-bold text-[#2F5132]">Making Espresso</p>
+           <p class="text-sm text-gray-600">Attribution 3.0 • Recorded by BlastwaveFx.com • Uploaded 06.11.09</p>
+           <p class="text-xs text-gray-500 mt-1">Espresso machine foaming and bubbling</p>
+          </div>
+         </div>
+        </div>
+        <div class="bg-[#F5F0E6] rounded-xl p-6 shadow-md">
+         <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 bg-[#4D7F52] rounded-full flex items-center justify-center flex-shrink-0">
+           <svg width="24" height="24" viewbox="0 0 24 24" fill="white"><polygon points="6,4 6,20 18,12" />
+           </svg>
+          </div>
+          <div class="flex-grow">
+           <p class="font-bold text-[#2F5132]">Pouring Hot Tea</p>
+           <p class="text-sm text-gray-600">Public Domain • Recorded by Cori Samuel • Uploaded 12.08.09</p>
+           <p class="text-xs text-gray-500 mt-1">Hot water being poured for tea, coffee, or hot chocolate</p>
+          </div>
+         </div>
+        </div>
+        <p class="text-center text-sm text-gray-600 mt-4">All audio sourced from <a href="http://soundbible.com/tags-cafe.html" target="_blank" rel="noopener noreferrer" class="text-[#4D7F52] hover:underline">soundbible.com</a></p>
+       </div><!-- Credits Section -->
+       <div class="mt-12 bg-[#F5F0E6] rounded-xl p-6 max-w-4xl mx-auto">
+        <h3 class="text-xl font-bold text-[#2F5132] mb-4 text-center">Image &amp; Audio Credits</h3>
+        <div class="text-sm text-gray-700 space-y-2">
+         <p><strong>Traditional Foods (1-4):</strong> <a href="https://www.newzealand.com/int/feature/indigenous-maori-food-ingredients/" target="_blank" rel="noopener noreferrer" class="text-[#4D7F52] hover:underline">NewZealand.com - Indigenous Māori Food</a></p>
+         <p><strong>Conference &amp; Event Food:</strong> <a href="https://www.tamakimaorivillage.co.nz/blog/traditional-foods-used-maori-culture/" target="_blank" rel="noopener noreferrer" class="text-[#4D7F52] hover:underline">Tamaki Māori Village</a> &amp; <a href="https://www.puhaandpakeha.co.nz" target="_blank" rel="noopener noreferrer" class="text-[#4D7F52] hover:underline">Puha and Pakeha</a></p>
+         <p><strong>Café Sounds:</strong> <a href="http://soundbible.com/tags-cafe.html" target="_blank" rel="noopener noreferrer" class="text-[#4D7F52] hover:underline">SoundBible.com</a> (Public Domain &amp; Attribution 3.0)</p>
+         <p><strong>Welcome Audio:</strong> "Tēnā koe and welcome to my cafe" - Created using text-to-speech generator</p>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div><!-- MENU PAGE -->
+    <div id="menu" class="page hidden">
+     <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       <h1 class="text-4xl md:text-5xl font-bold text-[#2F5132] mb-4 text-center">Menu / Rarangi Kai</h1>
+       <p class="text-xl text-center text-[#4D7F52] mb-12">Organic &amp; Traditional Kai</p><!-- Menu Images -->
+       <div class="flex justify-center gap-8 mb-12 flex-wrap">
+        <div class="menu-item-image rounded-lg shadow-xl" style="width: 300px; height: 200px; background: linear-gradient(135deg, #4D7F52 0%, #2F5132 100%); display: flex; align-items: center; justify-content: center;">
+         <div class="text-white text-center">
+          <svg width="80" height="80" viewbox="0 0 80 80" class="mx-auto mb-2"><path d="M40 15 Q30 20 25 30 Q28 40 35 50 L40 55 L45 50 Q52 40 55 30 Q50 20 40 15 Z" fill="rgba(255,255,255,0.5)" />
+          </svg>
+          <p class="font-bold">Traditional Kai</p>
+          <p class="text-xs opacity-75">newzealand.com</p>
+         </div>
+        </div>
+        <div class="menu-item-image rounded-lg shadow-xl" style="width: 300px; height: 200px; background: linear-gradient(135deg, #8B5E3C 0%, #4D7F52 100%); display: flex; align-items: center; justify-content: center;">
+         <div class="text-white text-center">
+          <svg width="80" height="80" viewbox="0 0 80 80" class="mx-auto mb-2"><circle cx="40" cy="40" r="25" fill="rgba(255,255,255,0.5)" /> <circle cx="40" cy="38" r="18" fill="rgba(255,255,255,0.3)" />
+          </svg>
+          <p class="font-bold">Traditional Kai</p>
+          <p class="text-xs opacity-75">newzealand.com</p>
+         </div>
+        </div>
+       </div><!-- Breakfast Section -->
+       <div class="mb-16">
+        <h2 class="text-3xl font-bold text-[#2F5132] mb-8 border-b-4 border-[#4D7F52] pb-3">BREAKFAST / PARAKUIHI</h2>
+        <div class="space-y-8">
+         <div class="flex gap-6 items-start">
+          <div class="menu-item-image rounded-lg shadow-lg flex-shrink-0" style="width: 120px; height: 120px; background: linear-gradient(135deg, #4D7F52 0%, #2F5132 100%); display: flex; align-items: center; justify-content: center;">
+           <svg width="60" height="60" viewbox="0 0 60 60" fill="rgba(255,255,255,0.7)"><rect x="15" y="20" width="30" height="20" rx="3" /> <rect x="20" y="25" width="20" height="3" /> <rect x="20" y="32" width="20" height="3" />
+           </svg>
+          </div>
+          <div class="flex-grow">
+           <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-bold text-[#2F5132]">Organic Rēwena Toast</h3><span class="text-xl font-bold text-[#4D7F52]">$12.50</span>
+           </div>
+           <p class="text-gray-700 leading-relaxed">Traditional Māori sourdough bread made with organic flour, served with local butter and house-made berry jam. A hearty breakfast classic that honors our heritage.</p>
+          </div>
+         </div>
+         <div class="flex gap-6 items-start">
+          <div class="menu-item-image rounded-lg shadow-lg flex-shrink-0" style="width: 120px; height: 120px; background: linear-gradient(135deg, #8B5E3C 0%, #4D7F52 100%); display: flex; align-items: center; justify-content: center;">
+           <svg width="60" height="60" viewbox="0 0 60 60" fill="rgba(255,255,255,0.7)"><circle cx="30" cy="30" r="18" /> <circle cx="30" cy="30" r="12" fill="rgba(47,81,50,0.5)" />
+           </svg>
+          </div>
+          <div class="flex-grow">
+           <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-bold text-[#2F5132]">Kūmara Hash Bowl</h3><span class="text-xl font-bold text-[#4D7F52]">$16.00</span>
+           </div>
+           <p class="text-gray-700 leading-relaxed">Roasted organic kūmara (sweet potato) with free-range eggs, sautéed greens, and native herbs. A nutritious and colorful start to your day.</p>
+          </div>
+         </div>
+        </div>
+       </div><!-- Lunch Section -->
+       <div>
+        <h2 class="text-3xl font-bold text-[#2F5132] mb-8 border-b-4 border-[#4D7F52] pb-3">LUNCH / TINA</h2>
+        <div class="space-y-8">
+         <div class="flex gap-6 items-start">
+          <div class="menu-item-image rounded-lg shadow-lg flex-shrink-0" style="width: 120px; height: 120px; background: linear-gradient(135deg, #2F5132 0%, #4D7F52 100%); display: flex; align-items: center; justify-content: center;">
+           <svg width="60" height="60" viewbox="0 0 60 60" fill="rgba(255,255,255,0.7)"><circle cx="30" cy="30" r="20" /> <circle cx="30" cy="28" r="14" fill="rgba(139,94,60,0.4)" /> <path d="M20 30 Q30 35 40 30" stroke="white" stroke-width="2" fill="none" />
+           </svg>
+          </div>
+          <div class="flex-grow">
+           <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-bold text-[#2F5132]">Pan-Seared Scallops</h3><span class="text-xl font-bold text-[#4D7F52]">$28.00</span>
+           </div>
+           <p class="text-gray-700 leading-relaxed">Fresh local scallops pan-seared to perfection, served on a bed of native watercress with citrus butter sauce. Sustainably sourced from New Zealand waters.</p>
+          </div>
+         </div>
+         <div class="flex gap-6 items-start">
+          <div class="menu-item-image rounded-lg shadow-lg flex-shrink-0" style="width: 120px; height: 120px; background: linear-gradient(135deg, #4D7F52 0%, #8B5E3C 100%); display: flex; align-items: center; justify-content: center;">
+           <svg width="60" height="60" viewbox="0 0 60 60" fill="rgba(255,255,255,0.7)"><ellipse cx="30" cy="30" rx="22" ry="15" /> <ellipse cx="30" cy="28" rx="18" ry="12" fill="rgba(47,81,50,0.4)" />
+           </svg>
+          </div>
+          <div class="flex-grow">
+           <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-bold text-[#2F5132]">Mussel Chowder</h3><span class="text-xl font-bold text-[#4D7F52]">$22.00</span>
+           </div>
+           <p class="text-gray-700 leading-relaxed">Creamy chowder with fresh green-lipped mussels, organic vegetables, and traditional herbs. Served with house-made rēwena bread for dipping.</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div><!-- CONTACT PAGE -->
+    <div id="contact" class="page hidden">
+     <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       <h1 class="text-4xl md:text-5xl font-bold text-[#2F5132] mb-12 text-center">Contact Us / Whakapā mai</h1><!-- Two Column Layout -->
+       <div class="grid md:grid-cols-2 gap-12 mb-12"><!-- Contact Form -->
+        <div class="bg-[#F5F0E6] rounded-xl p-8 shadow-lg">
+         <h2 class="text-2xl font-bold text-[#2F5132] mb-6">CONTACT FORM</h2>
+         <form id="contactForm" class="space-y-6">
+          <div><label for="name" class="block text-sm font-bold text-[#2F5132] mb-2">Name:</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border-2 border-[#4D7F52] focus:outline-none focus:border-[#2F5132] transition-colors">
+          </div>
+          <div><label for="email" class="block text-sm font-bold text-[#2F5132] mb-2">Email:</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border-2 border-[#4D7F52] focus:outline-none focus:border-[#2F5132] transition-colors">
+          </div>
+          <div><label for="message" class="block text-sm font-bold text-[#2F5132] mb-2">Message:</label> <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg border-2 border-[#4D7F52] focus:outline-none focus:border-[#2F5132] transition-colors resize-none"></textarea>
+          </div><button type="submit" class="w-full bg-[#4D7F52] text-white font-bold py-3 rounded-lg hover:bg-[#2F5132] transition-colors shadow-md"> SUBMIT / TUKU </button>
+         </form>
+         <div id="formMessage" class="mt-4 text-center font-semibold hidden"></div>
+        </div><!-- Contact Information -->
+        <div class="bg-[#F5F0E6] rounded-xl p-8 shadow-lg">
+         <div class="space-y-6">
+          <div>
+           <h3 class="text-xl font-bold text-[#2F5132] mb-2">ADDRESS</h3>
+           <p class="text-lg font-semibold text-[#4D7F52]" id="contact-site-name">Kai Ora Organic Café</p>
+           <p class="text-gray-700" id="contact-address">15 Rolleston Ave, City Centre, Christchurch</p>
+          </div>
+          <div>
+           <h3 class="text-xl font-bold text-[#2F5132] mb-2">PHONE</h3>
+           <p class="text-lg text-gray-700" id="contact-phone">03 123 456</p>
+          </div>
+          <div>
+           <h3 class="text-xl font-bold text-[#2F5132] mb-2">EMAIL</h3>
+           <p class="text-lg text-gray-700" id="contact-email">kai.ora@gmail.com</p>
+          </div>
+          <div>
+           <h3 class="text-xl font-bold text-[#2F5132] mb-2">HOURS</h3>
+           <p class="text-lg text-gray-700">Tues-Sun: 7am-3pm</p>
+           <p class="text-sm text-gray-600 mt-1">Closed Mondays</p>
+          </div>
+         </div>
+        </div>
+       </div><!-- Map -->
+       <div class="rounded-xl overflow-hidden shadow-2xl" style="max-width: 800px; height: 400px; margin: 0 auto; background: linear-gradient(135deg, #2F5132 0%, #4D7F52 100%); display: flex; align-items: center; justify-content: center;">
+        <div class="text-white text-center p-8">
+         <svg width="100" height="100" viewbox="0 0 100 100" class="mx-auto mb-4"><path d="M50 10 L50 40 M30 30 L70 30 M50 40 C50 55 35 70 35 85 C35 90 42 95 50 95 C58 95 65 90 65 85 C65 70 50 55 50 40 Z" stroke="white" stroke-width="3" fill="rgba(255,255,255,0.2)" /> <circle cx="50" cy="45" r="8" fill="white" />
+         </svg>
+         <p class="text-2xl font-bold mb-2">Google Maps Embed</p>
+         <p class="text-lg">15 Rolleston Ave, Christchurch</p>
+         <p class="text-sm mt-2 opacity-75">800px × 400px</p>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div>
+   </main><!-- Footer -->
+   <footer class="bg-[#2F5132] text-[#F5F0E6] py-12 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <div>
+       <h3 class="text-xl font-bold mb-4">Kai Ora Organic Café</h3>
+       <p class="text-sm" id="footer-address">15 Rolleston Ave<br>
+        City Centre, Christchurch</p>
+      </div>
+      <div>
+       <h3 class="text-xl font-bold mb-4">Contact</h3>
+       <p class="text-sm">Phone: <span id="footer-phone">03 123 456</span></p>
+       <p class="text-sm">Email: <span id="footer-email">kai.ora@gmail.com</span></p>
+      </div>
+      <div>
+       <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+       <div class="flex space-x-4">
+        <div class="w-10 h-10 bg-[#4D7F52] rounded-full flex items-center justify-center hover:bg-[#8B5E3C] transition-colors cursor-pointer">
+         <svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z" />
+         </svg>
+        </div>
+        <div class="w-10 h-10 bg-[#4D7F52] rounded-full flex items-center justify-center hover:bg-[#8B5E3C] transition-colors cursor-pointer">
+         <svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" /> <circle cx="12" cy="12" r="5" fill="#2F5132" /> <circle cx="18" cy="6" r="1.5" fill="#2F5132" />
+         </svg>
+        </div>
+        <div class="w-10 h-10 bg-[#4D7F52] rounded-full flex items-center justify-center hover:bg-[#8B5E3C] transition-colors cursor-pointer">
+         <svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor"><path d="M8 2H1L9.26086 13.0145L1.44995 21.9999H4.09998L10.4883 14.651L16 22H23L14.3917 10.5223L21.8001 2H19.1501L13.1643 8.88578L8 2Z" />
+         </svg>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="border-t border-[#4D7F52] pt-8 text-center text-sm">
+      <p>© 2024 Kai Ora Organic Café. All rights reserved. | Proudly serving Christchurch with organic kai.</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+        // Default config
+        const defaultConfig = {
+            site_name: "Kai Ora Organic Café",
+            hero_motto: "Whāngaihia tō tinana ki te kai organic",
+            hero_motto_english: "Nourish your body with organic kai",
+            phone_number: "03 123 456",
+            email_address: "kai.ora@gmail.com",
+            street_address: "15 Rolleston Ave, City Centre, Christchurch",
+            background_color: "#F5F0E6",
+            heading_color: "#2F5132",
+            accent_color: "#4D7F52",
+            secondary_accent_color: "#8B5E3C",
+            font_family: "Lato",
+            font_size: 16
+        };
+
+        // Current page state
+        let currentPage = 'home';
+        let currentSlideIndex = 0;
+        let currentGallerySlideIndex = 0;
+
+        // onConfigChange function
+        async function onConfigChange(config) {
+            // Update site name
+            const siteName = config.site_name || defaultConfig.site_name;
+            document.getElementById('nav-site-name').textContent = siteName;
+            document.getElementById('contact-site-name').textContent = siteName;
+
+            // Update hero text
+            document.getElementById('hero-motto').textContent = config.hero_motto || defaultConfig.hero_motto;
+            document.getElementById('hero-motto-english').textContent = config.hero_motto_english || defaultConfig.hero_motto_english;
+
+            // Update contact information
+            const phone = config.phone_number || defaultConfig.phone_number;
+            const email = config.email_address || defaultConfig.email_address;
+            const address = config.street_address || defaultConfig.street_address;
+
+            document.getElementById('contact-phone').textContent = phone;
+            document.getElementById('contact-email').textContent = email;
+            document.getElementById('contact-address').textContent = address;
+            document.getElementById('footer-phone').textContent = phone;
+            document.getElementById('footer-email').textContent = email;
+            document.getElementById('footer-address').innerHTML = address.replace(', ', '<br>');
+
+            // Apply colors
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const headingColor = config.heading_color || defaultConfig.heading_color;
+            const accentColor = config.accent_color || defaultConfig.accent_color;
+            const secondaryAccentColor = config.secondary_accent_color || defaultConfig.secondary_accent_color;
+
+            document.body.style.backgroundColor = backgroundColor;
+            document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(el => {
+                el.style.color = headingColor;
+            });
+
+            // Apply font
+            const fontFamily = config.font_family || defaultConfig.font_family;
+            const fontSize = config.font_size || defaultConfig.font_size;
+            
+            document.body.style.fontFamily = `'${fontFamily}', sans-serif`;
+            document.body.style.fontSize = `${fontSize}px`;
+            
+            document.querySelectorAll('h1').forEach(el => {
+                el.style.fontSize = `${fontSize * 2.5}px`;
+            });
+            document.querySelectorAll('h2').forEach(el => {
+                el.style.fontSize = `${fontSize * 2}px`;
+            });
+            document.querySelectorAll('h3').forEach(el => {
+                el.style.fontSize = `${fontSize * 1.5}px`;
+            });
+        }
+
+        // Initialize Element SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.heading_color || defaultConfig.heading_color,
+                            set: (value) => {
+                                config.heading_color = value;
+                                window.elementSdk.setConfig({ heading_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.accent_color || defaultConfig.accent_color,
+                            set: (value) => {
+                                config.accent_color = value;
+                                window.elementSdk.setConfig({ accent_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.secondary_accent_color || defaultConfig.secondary_accent_color,
+                            set: (value) => {
+                                config.secondary_accent_color = value;
+                                window.elementSdk.setConfig({ secondary_accent_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: {
+                        get: () => config.font_family || defaultConfig.font_family,
+                        set: (value) => {
+                            config.font_family = value;
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    },
+                    fontSizeable: {
+                        get: () => config.font_size || defaultConfig.font_size,
+                        set: (value) => {
+                            config.font_size = value;
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["site_name", config.site_name || defaultConfig.site_name],
+                    ["hero_motto", config.hero_motto || defaultConfig.hero_motto],
+                    ["hero_motto_english", config.hero_motto_english || defaultConfig.hero_motto_english],
+                    ["phone_number", config.phone_number || defaultConfig.phone_number],
+                    ["email_address", config.email_address || defaultConfig.email_address],
+                    ["street_address", config.street_address || defaultConfig.street_address]
+                ])
+            });
+        }
+
+        // Navigation
+        function navigateToPage(pageName) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.add('hidden');
+                page.classList.remove('active');
+            });
+            
+            const targetPage = document.getElementById(pageName);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                targetPage.classList.add('active');
+                currentPage = pageName;
+            }
+            
+            // Close mobile menu
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu) {
+                mobileMenu.classList.remove('active');
+            }
+        }
+
+        // Event listeners for navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = e.target.getAttribute('data-page');
+                navigateToPage(page);
+            });
+        });
+
+        // Hamburger menu
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (hamburgerBtn && mobileMenu) {
+            hamburgerBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+        }
+
+        // Home page slideshow
+        function changeSlide(direction) {
+            const slides = document.querySelectorAll('#home .slide');
+            slides[currentSlideIndex].classList.remove('active');
+            
+            currentSlideIndex += direction;
+            if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
+            if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
+            
+            slides[currentSlideIndex].classList.add('active');
+        }
+
+        // Gallery page slideshow
+        function changeGallerySlide(direction) {
+            const slides = document.querySelectorAll('#gallery .slideshow-container .slide');
+            slides[currentGallerySlideIndex].classList.remove('active');
+            
+            currentGallerySlideIndex += direction;
+            if (currentGallerySlideIndex >= slides.length) currentGallerySlideIndex = 0;
+            if (currentGallerySlideIndex < 0) currentGallerySlideIndex = slides.length - 1;
+            
+            slides[currentGallerySlideIndex].classList.add('active');
+        }
+
+        // Contact form
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Show success message
+                formMessage.textContent = 'Thank you! Your message has been sent successfully.';
+                formMessage.className = 'mt-4 text-center font-semibold text-green-600';
+                formMessage.classList.remove('hidden');
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.classList.add('hidden');
+                }, 5000);
+            });
+        }
+
+        // Initialize on page load
+        onConfigChange(defaultConfig);
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b4bd1f2b2551c5f',t:'MTc2Njg2OTk4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
